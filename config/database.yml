@@ -1,13 +1,10 @@
 development:
   database: shipt_api
   adapter: postgresql
-  username: Doom-Mac
-
 
 test:
   database: shipt_api_test
   adapter: postgresql
-  username: Doom-Mac
 
 
 
