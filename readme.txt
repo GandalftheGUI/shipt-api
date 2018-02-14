@@ -16,6 +16,8 @@ Please implement the following stories.
 
 4. Include the previous result as part of a function in the application. If you are using an ORM, please write the query in your ORM's DSL. Leave the original SQL in a separate file.
 
+  SELECT COUNT(*) AS count_all, "orders"."customer_id" AS orders_customer_id, "first_name" AS first_name, "category_id" AS category_id, categories.name AS categories_name FROM "orders" INNER JOIN "order_items" ON "order_items"."order_id" = "orders"."id" INNER JOIN "products" ON "products"."id" = "order_items"."product_id" INNER JOIN "category_assignments" ON "category_assignments"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "category_assignments"."category_id" INNER JOIN "customers" ON "customers"."id" = "orders"."customer_id" GROUP BY "orders"."customer_id", "first_name", "category_id", categories.name
+
 5. An API endpoint that accepts a date range and a day, week, or month and returns a breakdown of products sold by quantity per day/week/month.
 
 6. Ability to export the results of #5 to CSV.
