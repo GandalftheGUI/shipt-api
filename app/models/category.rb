@@ -1,6 +1,4 @@
 class Category < ApplicationRecord
-  create_table :categories do |t|
-    t.string :name
-    t.timestamps
-  end
+  has_many :products, through :category_assignments
+  has_many :category_assignments, dependent: :destroy
 end
