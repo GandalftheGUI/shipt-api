@@ -38,7 +38,8 @@ If Shipt knew the exact inventory of stores, and when facing a high traffic and 
 
 
 Things I would implement with more time:
-
 - Access control for API
-- More testing
+- More testing, i.e. bad input testing for controller, testing for other models and relationships
 - Validation for models and fields
+- Add more options for task 7, i.e. current orders, orders and products etc
+
