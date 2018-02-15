@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe OrdersController, type: :controller do
-  describe 'GET /'
-
   describe 'GET /orders/orders_by_period' do
     before :each do
       @start = DateTime.new(2009,1,1).utc.to_s

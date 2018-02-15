@@ -12,14 +12,17 @@ class OrdersController < ApplicationController
 
   #get /orders/orders_by_period/csv
   def orders_by_period_csv
-    @order_info = Order.orders_per_period(
+    @order_info_csv = Order.orders_per_period(
       params[:start_date].to_datetime,
       params[:end_date].to_datetime,
       params[:period],
       true
     )
 
-    render json: @order_info, status: :ok
+    respond_to do |format|
+       format.html
+       format.csv { send_data @order_info_csv }
+     end
   end
 
   #get /orders/:customer_id

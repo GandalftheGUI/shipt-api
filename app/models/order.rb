@@ -11,7 +11,10 @@ class Order < ApplicationRecord
 
     if csv
       CSV.generate do |csv|
-        csv.add_row [""]
+        csv.add_row [period.titlecase, "Category ID", "Category Name", "Units Sold"]
+        order_info.each do |k, v|
+          csv.add_row [k[0], k[1], k[2], v]
+        end
       end
     else
       return order_info
