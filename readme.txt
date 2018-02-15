@@ -1,4 +1,6 @@
-Tasks
+-----------------------------------------------------------------------------
+TASKS
+-----------------------------------------------------------------------------
 
 Please implement the following stories.
 
@@ -16,30 +18,42 @@ Please implement the following stories.
 
 4. Include the previous result as part of a function in the application. If you are using an ORM, please write the query in your ORM's DSL. Leave the original SQL in a separate file.
 
-  SELECT COUNT(*) AS count_all, "orders"."customer_id" AS orders_customer_id, "first_name" AS first_name, "category_id" AS category_id, categories.name AS categories_name FROM "orders" INNER JOIN "order_items" ON "order_items"."order_id" = "orders"."id" INNER JOIN "products" ON "products"."id" = "order_items"."product_id" INNER JOIN "category_assignments" ON "category_assignments"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "category_assignments"."category_id" INNER JOIN "customers" ON "customers"."id" = "orders"."customer_id" GROUP BY "orders"."customer_id", "first_name", "category_id", categories.name
-
 5. An API endpoint that accepts a date range and a day, week, or month and returns a breakdown of products sold by quantity per day/week/month.
 
 6. Ability to export the results of #5 to CSV.
 
 7. An API endpoint that returns the orders for a customer.
 
-Additional questions
+-----------------------------------------------------------------------------
+ADDITONAL QUESTIONS
+-----------------------------------------------------------------------------
 
 No coding necessary, explain the concept or sketch your thoughts.
 
 We want to give customers the ability to create lists of products for a one-click ordering of bulk items. How would you design the tables, what are the pros and cons of your approach?
+
+  
 
 If Shipt knew the exact inventory of stores, and when facing a high traffic and limited supply of a particular item, how do you distribute the inventory among customers checking out?
 
 
 
 
+-----------------------------------------------------------------------------
+ADITION INFO
+-----------------------------------------------------------------------------
+
+Task 4:
+
+  Raw SQL:
+    SELECT COUNT(*) AS count_all, "orders"."customer_id" AS orders_customer_id, "first_name" AS first_name, "category_id" AS category_id, categories.name AS categories_name FROM "orders" INNER JOIN "order_items" ON "order_items"."order_id" = "orders"."id" INNER JOIN "products" ON "products"."id" = "order_items"."product_id" INNER JOIN "category_assignments" ON "category_assignments"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "category_assignments"."category_id" INNER JOIN "customers" ON "customers"."id" = "orders"."customer_id" GROUP BY "orders"."customer_id", "first_name", "category_id", categories.name
+
+
 
 
 Things I would implement with more time:
-- Access control for API
+- Access control for API, currently anyone can access the API
 - More testing, i.e. bad input testing for controller, testing for other models and relationships
 - Validation for models and fields
-- Add more options for task 7, i.e. current orders, orders and products etc
+- I would like to add more options for task 7, i.e. current orders, orders and products etc
 

@@ -19,10 +19,7 @@ class OrdersController < ApplicationController
       true
     )
 
-    respond_to do |format|
-       format.html
-       format.csv { send_data @order_info_csv }
-     end
+    render html: @order_info_csv, status: :ok
   end
 
   #get /orders/:customer_id
