@@ -32,12 +32,11 @@ No coding necessary, explain the concept or sketch your thoughts.
 
 We want to give customers the ability to create lists of products for a one-click ordering of bulk items. How would you design the tables, what are the pros and cons of your approach?
 
-  
+  I would implement a 'customer products list' table (CPL). Each CPL would have many 'list entries', this would be a joins table between the CPL and products. This would allow us to persist the lists in the db. Customer could save them and access them in the future. In addition to the space that would be needed to store the lists we would incur extra database reads and writes as well. The other approach would be to store the list client side. This would negate the above concerns however this list would not persist across clients and as someone who likes to add things to my digital shopping carts as I think of them day to day, I don't believe this approach would be ideal.
 
 If Shipt knew the exact inventory of stores, and when facing a high traffic and limited supply of a particular item, how do you distribute the inventory among customers checking out?
 
-
-
+  I would implement a first come first serve policy. Given the exact inventory of stores, Shipt could keep track of all the inventory that has been 'claimed'. A customer would only 'claim' an item once they have checked out. If another user attempts to purchase an item which is no longer available, they would be notified when they try to checkout that the item is out of stock. If a user's cart contains an item which is no longer available, the next time they view their cart there would be a notice explaining the item is out of stock and the item would be moved to a 'saved for later' list.
 
 -----------------------------------------------------------------------------
 ADITION INFO
