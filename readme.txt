@@ -32,7 +32,7 @@ No coding necessary, explain the concept or sketch your thoughts.
 
 We want to give customers the ability to create lists of products for a one-click ordering of bulk items. How would you design the tables, what are the pros and cons of your approach?
 
-  I would implement a 'customer products list' table (CPL). Each CPL would have many 'list entries', this would be a joins table between the CPL and products. This would allow us to persist the lists in the db. Customer could save them and access them in the future. In addition to the space that would be needed to store the lists we would incur extra database reads and writes as well. The other approach would be to store the list client side. This would negate the above concerns however this list would not persist across clients and as someone who likes to add things to my digital shopping carts as I think of them day to day, I don't believe this approach would be ideal.
+  I would implement a 'customer products list' table (CPL). Each CPL would have many 'list entries', this would be a joins table between the CPL and products. This would allow us to persist the lists in the db. Customer could save them and access them in the future. In addition to the space that would be needed to store the lists we would incur extra database reads and writes as well. The other approach would be to store the list client side. This would negate the above concerns, however this list would not persist across clients and as someone who likes to add things to my digital shopping carts as I think of them day to day, while on my computer or phone, I don't believe this approach would be ideal.
 
 If Shipt knew the exact inventory of stores, and when facing a high traffic and limited supply of a particular item, how do you distribute the inventory among customers checking out?
 
@@ -48,10 +48,9 @@ Task 4:
     SELECT COUNT(*) AS count_all, "orders"."customer_id" AS orders_customer_id, "first_name" AS first_name, "category_id" AS category_id, categories.name AS categories_name FROM "orders" INNER JOIN "order_items" ON "order_items"."order_id" = "orders"."id" INNER JOIN "products" ON "products"."id" = "order_items"."product_id" INNER JOIN "category_assignments" ON "category_assignments"."product_id" = "products"."id" INNER JOIN "categories" ON "categories"."id" = "category_assignments"."category_id" INNER JOIN "customers" ON "customers"."id" = "orders"."customer_id" GROUP BY "orders"."customer_id", "first_name", "category_id", categories.name
 
 
-
-
 Things I would implement with more time:
 - Access control for API, currently anyone can access the API
+- Add indexes to tables
 - More testing, i.e. bad input testing for controller, testing for other models and relationships
 - Validation for models and fields
 - I would like to add more options for task 7, i.e. current orders, orders and products etc
